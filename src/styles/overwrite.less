@@ -1,0 +1,41 @@
+// 样式重写文件，主要用来重写第三方库在项目中的样式
+.v-main-app {
+    .ivu-form-item {
+        .m-b(@gap-md);
+    }
+    .ivu-form-item-error-tip {
+        .p-t(2);
+    }
+    .scrolly-bar {
+        border-width: 2px;
+        &.axis-y {
+            width: 6px;
+        }
+    }
+    .v-btn-list {
+        .ivu-btn {
+            .m-l(@gap);
+            &:first-child {
+                .m-l(0);
+            }
+        }
+    }
+    // 重写菜单样式
+    .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
+        z-index: 1;
+        &:after {
+            left: 0;
+            width: 3px;
+        }
+    }
+    // 覆盖radio样式，生成card类型的radio
+    .v-radio-card {
+        &.ivu-radio-group {
+            .ivu-radio-group-item {
+                .ivu-radio {
+                    display: none;
+                }
+            }
+        }
+    }
+}

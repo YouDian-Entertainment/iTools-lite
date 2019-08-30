@@ -1,0 +1,34 @@
+// 引入重写样式
+@import './overwrite.less';
+@import './markdown.less';
+
+body {
+    background-color: @background-color;
+    font-family: @font-family;
+}
+
+// 公共可用样式
+.text-overflow {
+    .text-overflow();
+}
+.text-bold {
+    font-weight: bold;
+}
+
+.drag-el {
+    -webkit-app-region: drag;
+}
+
+// 加密解密样式集合
+.v-encode-decode {
+    .v-btn-list {
+        .m-t(@gap);
+    }
+    .encode-result,
+    .decode-result {
+        .result-value {
+            word-wrap: break-word;
+            color: @danger;
+        }
+    }
+}

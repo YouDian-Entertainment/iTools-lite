@@ -1,0 +1,29 @@
+// markdown 文件解析样式
+.v-markdown {
+    h1, h2, h3, h4, h5, h6 {
+        .p-v(@gap-sm);
+    }
+    ul, li {
+        list-style: none;
+        .font-size();
+        .p-v(3px);
+    }
+    p {
+        .p-v(@gap-sm);
+    }
+    blockquote {
+        background-color: @gray-light;
+        border-left: 2px solid @content-color;
+        color: @tip-color;
+        .p(@gap-sm);
+        p {
+            .p(0);
+        }
+    }
+    pre {
+        .p(@gap);
+        background-color: @title-color;
+        color: @gray-light;
+        border-radius: @border-radius;
+    }
+}

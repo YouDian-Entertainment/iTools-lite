@@ -59,3 +59,10 @@ typings/
 
 # next.js build output
 .next
+
+# 屏蔽测试文件
+*.tst.*
+tst.*
+
+.DS_Store
+dist/
