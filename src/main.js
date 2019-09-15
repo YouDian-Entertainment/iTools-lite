@@ -1,6 +1,5 @@
 // electron 入口文件
-import { app, BrowserWindow, ipcMain, Tray, shell } from 'electron';
-// const pkg = require('./package.json');
+import { app, BrowserWindow, Menu, shell } from 'electron';
 import { AddDataBase, AddOpenFile } from './electron';
 import dbName from './constants/db';
 const { port, host } = require('../electron/config');
@@ -38,7 +37,6 @@ function createWindow() {
             scrollBounce: false,
             nodeIntegration: true,
         },
-        // icon: logo,
     });
 
     mainWindow.loadURL(winURL);
@@ -55,32 +53,41 @@ function createWindow() {
     AddDataBase(dbName.qrcode);
     AddDataBase(dbName.color);
     AddDataBase(dbName.board);
-    AddDataBase(dbName.qiniuBucket);
-    AddDataBase(dbName.aliyunBucket);
 
     AddOpenFile();
-    // 添加系统托盘
-    // tray = new Tray(logo);
-    // const contextMenu = Menu.buildFromTemplate([
-    //     { label: 'Item1', type: 'radio' },
-    //     { label: 'Item2', type: 'radio' },
-    //     { label: 'Item3', type: 'radio', checked: true },
-    //     { label: 'Item4', type: 'radio' },
-    // ]);
-    // tray.setToolTip('iTools');
-    // tray.setContextMenu(contextMenu);
+    // 自定义菜单
+    const template = [
+        {
+            role: 'appMenu',
+            label: app.getName(),
+            submenu: [
+                { label: '关于iTools', role: 'about' },
+                { label: '退出iTools', role: 'quit' }
+            ],
+        },
+        {
+            label: '帮助反馈',
+            role: 'help',
+            submenu: [
+                {
+                    label: '了解更多',
+                    click: async () => {
+                        await shell.openExternal('https://github.com/BingKui/iTools-lite');
+                    }
+                },
+                {
+                    label: 'Bug反馈',
+                    click: async () => {
+                        await shell.openExternal('https://github.com/BingKui/iTools-lite/issues');
+                    }
+                },
 
-    // ipcMain.on('open-file', async(event, filename) => {
-    //     shell.openItem(filename);
-    // });
-
-    // ipcMain.on('open-folder', async(event, dir) => {
-    //     shell.openItem(dir);
-    // });
+            ]
+        }
+    ];
+    const contextMenu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(contextMenu);
 }
-
-// app.setName(pkg.sorftName);
-// app.dock && app.dock.setIcon(logo);
 
 app.on('ready', createWindow);
 

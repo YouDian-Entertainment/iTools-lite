@@ -3,7 +3,5 @@ const dbName = {
     qrcode: 'qrcode',
     color: 'color',
     board: 'board',
-    qiniuBucket: 'qiniuBucket',
-    aliyunBucket: 'aliyunBucket',
 };
 export default dbName;

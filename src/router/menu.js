@@ -11,15 +11,12 @@ import Url from '@views/datasecurity/Url';
 
 // practical
 import Qrcode from '@views/practical/Qrcode';
-import ReadQrcode from '@views/practical/ReadQrcode';
 import Color from '@views/practical/Color';
 import Scale from '@views/practical/Scale';
 import Regular from '@views/practical/Regular';
 
 // text
 import TextCompare from '@views/text/TextCompare';
-import ChineseToPinyin from '@views/text/ChineseToPinyin';
-import ChineseAddPinyin from '@views/text/ChineseAddPinyin';
 
 // code
 import Json from '@views/code/Json';
@@ -30,6 +27,7 @@ import WechatCardSignature from '@views/wechat/WechatCardSignature';
 import WechatOpen from '@views/wechat/WechatOpen';
 
 // other
+import Contact from '@views/other/Contact';
 
 // empty
 import { Empty } from '@components';
@@ -77,14 +75,6 @@ export default [{
         icon: 'ios-browsers-outline', // 图标
         name: '文本比较', // 菜单名称
         router: 'text-compare', // 菜单路由
-    }, {
-        icon: 'ios-shuffle', // 图标
-        name: '汉字转拼音', // 菜单名称
-        router: 'chinese-to-spell', // 菜单路由
-    }, {
-        icon: 'ios-shuffle', // 图标
-        name: '汉字添加拼音', // 菜单名称
-        router: 'chinese-add-spell', // 菜单路由
     }],
 }, {
     groupName: '微信工具', // 分组名称
@@ -123,21 +113,9 @@ export default [{
 }, {
     groupName: '其他',
     menuList: [{
-    //     icon: 'ios-help-circle-outline',
-    //     name: '使用帮助',
-    //     router: 'other-help',
-    // }, {
-    //     icon: 'ios-bug-outline',
-    //     name: 'Bug反馈',
-    //     router: 'other-bug',
-    // }, {
         icon: 'ios-contact-outline',
         name: '联系作者',
-        router: 'other-bug',
-    // }, {
-    //     icon: 'ios-leaf-outline',
-    //     name: '推荐功能',
-    //     router: 'other-recommend',
+        router: 'other-contact',
     }],
 }];
 
@@ -176,16 +154,6 @@ export const menuArray = [{
     router: 'text-compare',
     path: '/text-compare',
     component: TextCompare,
-}, {
-    name: 'chinese-to-spell',
-    router: 'chinese-to-spell',
-    path: '/chinese-to-spell',
-    component: ChineseToPinyin,
-}, {
-    name: 'chinese-add-spell',
-    router: 'chinese-add-spell',
-    path: '/chinese-add-spell',
-    component: ChineseAddPinyin,
 }, {
     name: 'wechat-js',
     router: 'wechat-js',
@@ -232,18 +200,8 @@ export const menuArray = [{
     path: '/encrypt-super',
     component: Empty,
 }, {
-    name: 'other-help',
-    router: 'other-help',
-    path: '/other-help',
-    component: Empty,
-}, {
-    name: 'other-bug',
-    router: 'other-bug',
-    path: '/other-bug',
-    component: Empty,
-}, {
-    name: 'other-recommend',
-    router: 'other-recommend',
-    path: '/other-recommend',
-    component: Empty,
+    name: 'other-contact',
+    router: 'other-contact',
+    path: '/other-contact',
+    component: Contact,
 }];

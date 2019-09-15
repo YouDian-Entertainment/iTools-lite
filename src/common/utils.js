@@ -1,7 +1,7 @@
 // 复制文本到剪贴板插件
 const copy = require('copy-text-to-clipboard');
 const { readMarkdownFile, readQrcodeImage } = require('../node');
-// import { ipcRenderer } from 'electron';
+import { shell } from 'electron';
 
 
 const hljs = require('highlight.js');
@@ -90,4 +90,8 @@ export const createFileObject = (filePath) => {
         fileName: getFileName(filePath),
         fileType: getFileType(filePath),
     };
+};
+
+export const openLink = async (link) => {
+    await shell.openExternal(link);
 };
