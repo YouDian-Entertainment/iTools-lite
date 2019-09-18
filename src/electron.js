@@ -1,5 +1,5 @@
 // electron 相关的原生方法封装
-import { app, Notification, globalShortcut, Menu, ipcMain, dialog } from 'electron';
+import { app, Notification, globalShortcut, Menu, ipcMain, dialog, shell } from 'electron';
 import path from 'path';
 import Datastore from 'nedb';
 
@@ -125,12 +125,66 @@ const AddSaveFile = () => {
 };
 const AddOpenFolder = () => {};
 
-// const AddQiniuUploadFile = () => {
-//     ipcMain.on('qiniu-upload', async (event, bucket, file) => {
-//         const res = await qiniuUpload(bucket, file);
-//         event.sender.send('qiniu-upload-result', res);
-//     });
-// };
+const CustomerMenu = () => {
+    const template = [
+        // { role: 'appMenu' }
+        ...(process.platform === 'darwin' ? [{
+            label: app.getName(),
+            submenu: [
+                { label: '关于iTools', role: 'about' },
+                { type: 'separator' },
+                { label: '服务', role: 'services' },
+                { type: 'separator' },
+                { label: '隐藏', role: 'hide' },
+                { label: '隐藏其他', role: 'hideothers' },
+                { label: '显示', role: 'unhide' },
+                { type: 'separator' },
+                { label: '退出iTools', role: 'quit' }
+            ],
+        }] : []),
+        // { role: 'editMenu' }
+        {
+            label: '编辑',
+            submenu: [
+                { label: '撤销', role: 'undo' },
+                { label: '重做', role: 'redo' },
+                { type: 'separator' },
+                { label: '剪切', role: 'cut' },
+                { label: '复制', role: 'copy' },
+                { label: '粘贴', role: 'paste' },
+                { type: 'separator' },
+                { label: '全选', role: 'selectAll' }
+            ]
+        },
+        // { role: 'windowMenu' }
+        {
+            label: '窗口',
+            submenu: [
+                { label: '最小化', role: 'minimize' },
+            ],
+        },
+        {
+            label: '帮助反馈',
+            role: 'help',
+            submenu: [
+                {
+                    label: '了解更多',
+                    click: async () => {
+                        await shell.openExternal('https://github.com/BingKui/iTools-lite');
+                    }
+                },
+                {
+                    label: 'Bug反馈',
+                    click: async () => {
+                        await shell.openExternal('https://github.com/BingKui/iTools-lite/issues');
+                    }
+                },
+            ]
+        }
+    ];
+    const menu = Menu.buildFromTemplate(template);
+    Menu.setApplicationMenu(menu);
+};
 
 module.exports = {
     Notic,
@@ -138,4 +192,5 @@ module.exports = {
     AddMenuList,
     AddDataBase,
     AddOpenFile,
+    CustomerMenu,
 };
