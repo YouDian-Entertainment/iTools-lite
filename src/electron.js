@@ -139,6 +139,7 @@ const CustomerMenu = () => {
                 { label: '隐藏其他', role: 'hideothers' },
                 { label: '显示', role: 'unhide' },
                 { type: 'separator' },
+                { label: '关闭', role: 'close' },
                 { label: '退出iTools', role: 'quit' }
             ],
         }] : []),
