@@ -67,7 +67,7 @@
     "copy-text-to-clipboard": "^2.0.0",
     "dayjs": "^1.8.14",
     "diff": "^4.0.1",
-    "highlight.js": "^9.15.6",
+    "highlight.js": "^10.4.1",
     "imagemin": "^6.1.0",
     "iview": "^3.3.3",
     "jimp": "^0.6.4",
