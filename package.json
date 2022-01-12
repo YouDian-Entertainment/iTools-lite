@@ -72,7 +72,7 @@
     "iview": "^3.3.3",
     "jimp": "^0.6.4",
     "js-base64": "^2.5.1",
-    "markdown-it": "^8.4.2",
+    "markdown-it": "^12.3.2",
     "md5": "^2.2.1",
     "nedb": "^1.8.0",
     "pinyin-no-jieba": "^2.8.3",
